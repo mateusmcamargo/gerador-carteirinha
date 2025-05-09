@@ -12,7 +12,7 @@ function App() {
 
   const gerarImagem = async () => {
     const fundo = new Image();
-    fundo.src = '/sua-imagem.png'; // coloque sua imagem na pasta public/
+    fundo.src = '/img.png';
     await fundo.decode();
 
     const finalCanvas = canvasRef.current;
