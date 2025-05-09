@@ -11,50 +11,63 @@ function App() {
   const canvasRef = useRef();
 
   const gerarImagem = async () => {
-    const fundo = new Image();
-    fundo.src = '/img.png';
-    await fundo.decode();
-
-    const finalCanvas = canvasRef.current;
-    const ctx = finalCanvas.getContext('2d');
-    finalCanvas.width = fundo.width;
-    finalCanvas.height = fundo.height;
-    ctx.drawImage(fundo, 0, 0);
-
-    if (usarQR && textoQR.trim()) {
-      const qrCanvas = document.createElement('canvas');
-      await QRCode.toCanvas(qrCanvas, textoQR, { width: 204 });
-      const posX = finalCanvas.width - qrCanvas.width - 63;
-      const posY = finalCanvas.height - qrCanvas.height - 277;
-      ctx.drawImage(qrCanvas, posX, posY);
+    try {
+      const fundo = new Image();
+      fundo.src = 'https://mateusmcamargo.github.io/code-generator/img.png';
+      await fundo.decode();
+  
+      const finalCanvas = canvasRef.current;
+      const ctx = finalCanvas.getContext('2d');
+      finalCanvas.width = fundo.width;
+      finalCanvas.height = fundo.height;
+      ctx.drawImage(fundo, 0, 0);
+  
+      if (usarQR && textoQR.trim()) {
+        const qrCanvas = document.createElement('canvas');
+        await QRCode.toCanvas(qrCanvas, textoQR, { width: 204 });
+        const posX = finalCanvas.width - qrCanvas.width - 63;
+        const posY = finalCanvas.height - qrCanvas.height - 277;
+        try {
+          ctx.drawImage(qrCanvas, posX, posY);
+        } catch (err) {
+          console.error('Erro ao desenhar QR code:', err);
+        }
+      }
+  
+      if (usarBarra && textoBarra.trim()) {
+        const barcodeCanvas = document.createElement('canvas');
+        barcodeCanvas.getContext('2d'); // força contexto
+        try {
+          JsBarcode(barcodeCanvas, textoBarra, {
+            format: 'CODE128',
+            width: 5.81,
+            height: 63,
+            displayValue: false,
+          });
+          const posX = finalCanvas.width - barcodeCanvas.width - 63;
+          const posY = finalCanvas.height - barcodeCanvas.height - 139;
+          ctx.drawImage(barcodeCanvas, posX, posY);
+        } catch (err) {
+          console.error('Erro ao desenhar código de barras:', err);
+        }
+      }
+  
+      setGerado(true);
+    } catch (erroFinal) {
+      console.error('Erro geral na geração da imagem:', erroFinal);
     }
-
-    if (usarBarra && textoBarra.trim()) {
-      const barcodeCanvas = document.createElement('canvas');
-      JsBarcode(barcodeCanvas, textoQR, {
-        format: 'CODE128',
-        width: 5.81,
-        height: 63,
-        displayValue: false,
-      });
-      const posX = finalCanvas.width - barcodeCanvas.width - 63;
-      const posY = finalCanvas.height - barcodeCanvas.height - 139;
-      ctx.drawImage(barcodeCanvas, posX, posY);
-    }
-
-    setGerado(true);
-  };
+  };  
 
   const baixarImagem = () => {
     const link = document.createElement('a');
-    link.download = 'imagem_com_codigos.png';
+    link.download = 'carteirinha.png';
     link.href = canvasRef.current.toDataURL();
     link.click();
   };
 
   return (
     <div style={{ textAlign: 'center', padding: '2rem' }}>
-      <h1>Imagem com QR Code e Código de Barras</h1>
+      <h1>carteirinha com qr code e codigo de barras</h1>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
@@ -63,12 +76,12 @@ function App() {
             checked={usarQR}
             onChange={() => setUsarQR(!usarQR)}
           />{' '}
-          Incluir QR Code
+          incluir matricula
         </label>
         <br />
         <input
           type="text"
-          placeholder="Texto para QR Code"
+          placeholder="matricula"
           value={textoQR}
           onChange={(e) => setTextoQR(e.target.value)}
           style={{ padding: '0.5rem', width: '60%', marginTop: '0.5rem' }}
@@ -82,12 +95,12 @@ function App() {
             checked={usarBarra}
             onChange={() => setUsarBarra(!usarBarra)}
           />{' '}
-          Incluir Código de Barras
+          incluir RA
         </label>
         <br />
         <input
           type="text"
-          placeholder="Texto para Código de Barras"
+          placeholder="RA"
           value={textoBarra}
           onChange={(e) => setTextoBarra(e.target.value)}
           style={{ padding: '0.5rem', width: '60%', marginTop: '0.5rem' }}
@@ -95,7 +108,7 @@ function App() {
       </div>
 
       <button onClick={gerarImagem} style={{ padding: '0.5rem 1rem' }}>
-        Gerar Imagem
+        gerar carteirinha
       </button>
       <br /><br />
 
@@ -104,7 +117,7 @@ function App() {
 
       {gerado && (
         <button onClick={baixarImagem} style={{ padding: '0.5rem 1rem' }}>
-          Baixar Imagem
+          baixar carteirinha
         </button>
       )}
     </div>
