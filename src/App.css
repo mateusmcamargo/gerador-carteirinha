@@ -1,38 +1,144 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  border: none;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  cursor: pointer;
+  background-color: #FFDE59;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+section.section-input {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 60vw;
+  margin: 5vh auto;
+}
+section.section-input h1 {
+  align-self: center;
+  color: #333;
+  text-align: center;
+}
+section.section-input input, section.section-input select, section.section-input button, section.section-input label {
+  width: 50%;
+  height: 36px;
+  padding: 4px 12px;
+  margin: 12px 0;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  outline: 0px solid #FFDE59;
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+section.section-input input[type=file], section.section-input select[type=file], section.section-input button[type=file], section.section-input label[type=file] {
+  display: none;
+}
+section.section-input input:focus, section.section-input select:focus, section.section-input button:focus, section.section-input label:focus {
+  outline: 2px solid #FFDE59;
+}
+section.section-input input::-moz-placeholder, section.section-input select::-moz-placeholder, section.section-input button::-moz-placeholder, section.section-input label::-moz-placeholder {
+  color: #8b8b8b;
+}
+section.section-input input::placeholder, section.section-input select::placeholder, section.section-input button::placeholder, section.section-input label::placeholder {
+  color: #8b8b8b;
+}
+section.section-input button {
+  background-color: #FFDE59;
+}
+section.section-input label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #8b8b8b;
+}
+section.section-input label.loaded {
+  color: #333;
+}
+section.section-input div.div-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+section.section-input div.div-grid select {
+  width: 49%;
+}
+section.section-input div.div-grid button {
+  width: 49%;
 }
 
-.App-link {
-  color: #61dafb;
+section.section-canva {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+section.section-canva canvas {
+  width: 50%;
+}
+section.section-canva button {
+  width: 30%;
+  height: 36px;
+  padding: 4px 12px;
+  margin: 12px 0;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  background-color: #FFDE59;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 600px) {
+  section.section-input {
+    width: 85vw;
+    margin-top: 24px;
   }
-  to {
-    transform: rotate(360deg);
+  section.section-input h1 {
+    margin-bottom: 12px;
   }
-}
+  section.section-input input, section.section-input select, section.section-input button, section.section-input label {
+    width: 100%;
+  }
+  section.section-input div.div-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  section.section-input div.div-grid select {
+    width: 100%;
+  }
+  section.section-input div.div-grid button {
+    width: 100%;
+  }
+  section.section-canva {
+    width: 85vw;
+    margin-top: 16px;
+  }
+  section.section-canva canvas {
+    width: 100%;
+  }
+  section.section-canva button {
+    width: 100%;
+    padding: 4px 12px;
+    margin: 12px 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    background-color: #FFDE59;
+  }
+}/*# sourceMappingURL=app.css.map */
