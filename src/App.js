@@ -171,7 +171,7 @@ function App() {
         }
     };  
 
-    const baixarImagem = () => {
+    const downloadImage = () => {
         const link = document.createElement('a');
         link.download = `${textBar}_${textQR}.png`;
         link.href = canvasRef.current.toDataURL();
@@ -234,7 +234,7 @@ function App() {
             <canvas ref={canvasRef}></canvas>
 
             {generated && (
-                <button onClick={baixarImagem}>
+                <button onClick={downloadImage}>
                     baixar carteirinha
                 </button>
             )}
