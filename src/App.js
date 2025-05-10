@@ -10,10 +10,26 @@ function App() {
   const [gerado, setGerado] = useState(false);
   const canvasRef = useRef();
 
+  const [userPicture, setProfilePicture] = useState(null);
+
+  const handleProfileImage = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.src = reader.result;
+      img.crossOrigin = 'anonymous';
+      img.onload = () => setProfilePicture(img);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const gerarImagem = async () => {
     try {
       const fundo = new Image();
-      fundo.src = 'https://mateusmcamargo.github.io/code-generator/img.png';
+      fundo.src = 'https://mateusmcamargo.github.io/code-generator/img.svg';
       await fundo.decode();
   
       const finalCanvas = canvasRef.current;
@@ -24,7 +40,14 @@ function App() {
   
       if (usarQR && textoQR.trim()) {
         const qrCanvas = document.createElement('canvas');
-        await QRCode.toCanvas(qrCanvas, textoQR, { width: 204 });
+        await QRCode.toCanvas(qrCanvas, textoQR, {
+          width: 204,
+          margin: 0,
+          color: {
+            light: '#F6F6ED',
+            dark: '#333333'
+          }
+        });
         const posX = finalCanvas.width - qrCanvas.width - 63;
         const posY = finalCanvas.height - qrCanvas.height - 277;
         try {
@@ -40,9 +63,13 @@ function App() {
         try {
           JsBarcode(barcodeCanvas, textoBarra, {
             format: 'CODE128',
-            width: 5.81,
-            height: 63,
+            width: 7.68,
+            height: 82,
             displayValue: false,
+            fit: false,
+            margin: 0,
+            background: '#F6F6ED',
+            lineColor: '#333333'
           });
           const posX = finalCanvas.width - barcodeCanvas.width - 63;
           const posY = finalCanvas.height - barcodeCanvas.height - 139;
@@ -52,6 +79,37 @@ function App() {
         }
       }
   
+      if (userPicture) {
+        const desiredRatio = 3 / 4;
+        const img = userPicture;
+
+        let cropX = 0;
+        let cropY = 0;
+        let cropWidth = img.width;
+        let cropHeight = img.height;
+
+        const currentRatio = img.width / img.height;
+
+        if (currentRatio > desiredRatio) {
+          // Imagem mais "larga" que 3:4 → cortar laterais
+          cropWidth = img.height * desiredRatio;
+          cropX = (img.width - cropWidth) / 2;
+        } else {
+          // Imagem mais "alta" que 3:4 → cortar em cima/baixo
+          cropHeight = img.width / desiredRatio;
+          cropY = (img.height - cropHeight) / 2;
+        }
+
+        // Agora você pode desenhar no canvas:
+        ctx.drawImage(
+          img,
+          cropX, cropY,
+          cropWidth, cropHeight,
+          64, 159,          // posição no canvas
+          256, 341 // tamanho desejado final (ex: 90 x 120)
+        );
+      }
+
       setGerado(true);
     } catch (erroFinal) {
       console.error('Erro geral na geração da imagem:', erroFinal);
@@ -70,6 +128,12 @@ function App() {
       <h1>carteirinha com qr code e codigo de barras</h1>
 
       <div style={{ marginBottom: '1rem' }}>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleProfileImage}
+        />
+        <br />
         <label>
           <input
             type="checkbox"
