@@ -10,6 +10,15 @@ button {
     background-color: $color-primary;
 }
 
+i {
+    color: $color-placeholder;
+    margin-right: 8px;
+    
+    &.loaded {
+        color: $color-dark;
+    }
+}
+
 section.section-input {
     display: flex;
     flex-direction: column;

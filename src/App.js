@@ -207,6 +207,7 @@ function App() {
                     accept="image/*"
                     onChange={handleProfileImage}
                 />
+                <i className={fileLoad ? 'fa-solid fa-file-image loaded' : 'fa-solid fa-file-import'}></i>
                 {fileName}
             </label>
 

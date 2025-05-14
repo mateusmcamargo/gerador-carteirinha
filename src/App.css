@@ -13,6 +13,14 @@ button {
   background-color: #FFDE59;
 }
 
+i {
+  color: #8b8b8b;
+  margin-right: 8px;
+}
+i.loaded {
+  color: #333;
+}
+
 section.section-input {
   display: flex;
   flex-direction: column;
