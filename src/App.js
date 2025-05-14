@@ -6,13 +6,12 @@ import JsBarcode            from 'jsbarcode';
 function App() {
 
     // Use state constants
-    const [textQR,     setTextQR]    = useState('');
-    const [textBar,    setTextBar]   = useState('');
-    const [generated,  setGenerated] = useState(false);
-    const [fileLoad,   setFileLoad]  = useState(false);
-    const [fileName,   setFileName]  = useState('selecione o arquivo da foto');
-    const [name,       setName]      = useState('');
-    const [course,     setCourse]    = useState('');
+    const [textRA,    setTextRA]   = useState('');
+    const [generated, setGenerated] = useState(false);
+    const [fileLoad,  setFileLoad]  = useState(false);
+    const [fileName,  setFileName]  = useState('selecione o arquivo da foto');
+    const [name,      setName]      = useState('');
+    const [course,    setCourse]    = useState('');
 
     // Use Ref constants
     const canvasRef = useRef();
@@ -53,9 +52,14 @@ function App() {
             finalCanvas.height = imgBg.height;
             ctx.drawImage(imgBg, 0, 0, imgBg.width, imgBg.height);
 
-            if (textQR.trim()) {
+            // if textRA isnt empty
+            if (textRA.trim()) {
+
+                // create canvas element for qrcode
                 const qrCanvas = document.createElement('canvas');
-                await QRCode.toCanvas(qrCanvas, textQR, {
+
+                // set qrcode for canvas
+                await QRCode.toCanvas(qrCanvas, textRA, {
                     width: 285,
                     margin: 0,
                     color: {
@@ -63,29 +67,36 @@ function App() {
                         dark: '#333333'
                     }
                 });
-                const posX = finalCanvas.width  - qrCanvas.width  - 94;
-                const posY = finalCanvas.height - qrCanvas.height - 396;
+                
+                // try and draw qrcode on canvas on given coordinates, catching any errors
                 try {
+                    const posX = finalCanvas.width  - qrCanvas.width  - 94;
+                    const posY = finalCanvas.height - qrCanvas.height - 396;
                     ctx.drawImage(qrCanvas, posX, posY);
                 } catch (err) {
                     console.error('Erro ao desenhar QR code:', err);
                 }
-            }
 
-            if (textBar.trim()) {
+                // create canvas element for barcode
                 const barcodeCanvas = document.createElement('canvas');
-                barcodeCanvas.getContext('2d'); // força contexto
+
+                // forces context for barcode
+                barcodeCanvas.getContext('2d');
+
+                // sets bar code for canvas
+                JsBarcode(barcodeCanvas, textRA, {
+                    format: 'CODE128',
+                    width: 10.74,
+                    height: 114,
+                    displayValue: false,
+                    fit: false,
+                    margin: 0,
+                    background: '#F6F6ED',
+                    lineColor: '#333333'
+                });
+
+                // try and draw barcode on canvas on given coordinates, catching any errors
                 try {
-                    JsBarcode(barcodeCanvas, textBar, {
-                        format: 'CODE128',
-                        width: 10.74,
-                        height: 114,
-                        displayValue: false,
-                        fit: false,
-                        margin: 0,
-                        background: '#F6F6ED',
-                        lineColor: '#333333'
-                    });
                     const posX = finalCanvas.width  - barcodeCanvas.width  - 95;
                     const posY = finalCanvas.height - barcodeCanvas.height - 203;
                     ctx.drawImage(barcodeCanvas, posX, posY);
@@ -98,6 +109,7 @@ function App() {
             ctx.fillStyle = '#333';
             ctx.textAlign = 'left';
 
+            // text coordinates and margins
             const textXStart        = 488;
             const textYName         = 254;
             const textYNameMargin   = 74;
@@ -126,35 +138,39 @@ function App() {
 
             // registrarion (bold)
             ctx.font = 'bold 32px sans-serif';
-            ctx.fillText('Matrícula: ', textXStart, textYUni + (textYMargin * 3));
-            const textWidthRegistration = ctx.measureText('Matrícula: ').width;
+            ctx.fillText('Registro de aluno: ', textXStart, textYUni + (textYMargin * 3));
+            const textWidthRegistration = ctx.measureText('Registro de aluno: ').width;
 
             // registrarion (value)
             ctx.font = '32px sans-serif';
-            ctx.fillText(textQR, textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
+            ctx.fillText(textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
 
+            // if user picture is submited
             if (userPicture) {
+                // sets goal ratio
                 const desiredRatio = 3 / 4;
                 const img = userPicture;
 
+                // sets cropping data
                 let cropX = 0;
                 let cropY = 0;
                 let cropWidth = img.width;
                 let cropHeight = img.height;
 
+                // get current image ratio
                 const currentRatio = img.width / img.height;
 
                 if (currentRatio > desiredRatio) {
                     // cut horizontally
                     cropWidth = img.height * desiredRatio;
-                    cropX = (img.width - cropWidth) / 2;
+                    cropX     = (img.width - cropWidth) / 2;
                 } else {
                     // cut vertically
                     cropHeight = img.width / desiredRatio;
-                    cropY = (img.height - cropHeight) / 2;
+                    cropY      = (img.height - cropHeight) / 2;
                 }
 
-                // drawing picture on canvas
+                // draw picture on canvas
                 ctx.drawImage(
                     img,
                     cropX, cropY,
@@ -166,14 +182,15 @@ function App() {
 
             setGenerated(true);
             
-        } catch (erroFinal) {
-            console.error('Erro geral na geração da imagem:', erroFinal);
+        } catch (finalErr) {
+            console.error('Erro geral na geração da imagem:', finalErr);
         }
     };  
 
+    // downloads image (only works when deployed, WILL NOT work on local servers)
     const downloadImage = () => {
         const link = document.createElement('a');
-        link.download = `${textBar}_${textQR}.png`;
+        link.download = `${textRA}.png`;
         link.href = canvasRef.current.toDataURL();
         link.click();
     };
@@ -182,7 +199,9 @@ function App() {
         <>
         <section className='section-input'>
             <h1>gerador de carteirinha</h1>
-            <label className={fileLoad ? 'loaded' : ''}>
+            
+            <label className='actual-label'>foto</label>
+            <label className={fileLoad ? 'pseudo-input loaded' : 'pseudo-input'}>
                 <input
                     type="file"
                     accept="image/*"
@@ -191,27 +210,23 @@ function App() {
                 {fileName}
             </label>
 
-            <input
-                type="text"
-                placeholder="matricula (123456789)"
-                value={textQR}
-                onChange={(e) => setTextQR(e.target.value)}
-            />
-
-            <input
-                type="text"
-                placeholder="RA (01234567)"
-                value={textBar}
-                onChange={(e) => setTextBar(e.target.value)}
-            />
-
+            <label className='actual-label'>nome</label>
             <input
                 type="text"
                 placeholder="nome do aluno"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
+            
+            <label className='actual-label'>registro de aluno</label>
+            <input
+                type="text"
+                placeholder="RA (01234567)"
+                value={textRA}
+                onChange={(e) => setTextRA(e.target.value)}
+            />
 
+            <label className='actual-label'>curso</label>
             <div className='div-grid'>
                 <select
                     value={course}
