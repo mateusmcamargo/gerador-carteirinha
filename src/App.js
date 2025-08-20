@@ -143,7 +143,7 @@ function App() {
 
             // registrarion (value)
             ctx.font = '32px sans-serif';
-            if (textRA.charAt(0) != 0) {
+            if (textRA.charAt(0) !== 0) {
                 ctx.fillText('0' + textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
             } else {
                 ctx.fillText(textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
