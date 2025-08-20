@@ -58,8 +58,13 @@ function App() {
                 // create canvas element for qrcode
                 const qrCanvas = document.createElement('canvas');
 
+                let newTextRA = textRA.toString();
+                if (textRA.charAt(0) !== '0') {
+                    newTextRA = '0' + newTextRA;
+                }
+
                 // set qrcode for canvas
-                await QRCode.toCanvas(qrCanvas, textRA, {
+                await QRCode.toCanvas(qrCanvas, newTextRA, {
                     width: 285,
                     margin: 0,
                     color: {
@@ -84,7 +89,7 @@ function App() {
                 barcodeCanvas.getContext('2d');
 
                 // sets bar code for canvas
-                JsBarcode(barcodeCanvas, textRA, {
+                JsBarcode(barcodeCanvas, newTextRA, {
                     format: 'CODE128',
                     width: 10.74,
                     height: 114,
@@ -143,10 +148,10 @@ function App() {
 
             // registrarion (value)
             ctx.font = '32px sans-serif';
-            if (textRA.charAt(0) !== 0) {
-                ctx.fillText('0' + textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
-            } else {
+            if (textRA.charAt(0) === '0') {
                 ctx.fillText(textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
+            } else {
+                ctx.fillText(textRA, textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
             }
 
             // if user picture is submited
