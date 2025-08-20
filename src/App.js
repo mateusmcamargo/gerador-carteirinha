@@ -143,7 +143,11 @@ function App() {
 
             // registrarion (value)
             ctx.font = '32px sans-serif';
-            ctx.fillText(textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
+            if (textRA.charAt(0) != 0) {
+                ctx.fillText('0' + textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
+            } else {
+                ctx.fillText(textRA.slice(1), textXStart + textWidthRegistration, textYUni + (textYMargin * 3));
+            }
 
             // if user picture is submited
             if (userPicture) {
@@ -190,7 +194,7 @@ function App() {
     // downloads image (only works when deployed, WILL NOT work on local servers)
     const downloadImage = () => {
         const link = document.createElement('a');
-        link.download = `${textRA}.png`;
+        link.download = `${name.toUpperCase()}.png`;
         link.href = canvasRef.current.toDataURL();
         link.click();
     };
