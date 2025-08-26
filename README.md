@@ -4,7 +4,7 @@ Projeto feito em [React](https://react.dev/). Um gerador de carteirinhas para os
 
 ## Deploy no Github Pages
 
-O projeto está disponível nessa [página](https://mateusmcamargo.github.io/code-generator/)
+O projeto está disponível nessa [página](https://mateusmcamargo.github.io/gerador-carteirinha/)
 
 ## Funcionalidade
 
