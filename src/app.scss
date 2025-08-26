@@ -1,11 +1,46 @@
-$color-dark: #333;
-$color-placeholder: #8b8b8b;
-$color-light: #F6F6ED;
-$color-primary: #FFDE59;
+$color-dark:          #303030;
+$color-placeholder:   #8b8b8b;
+$color-lighter:       #F6F6ED;
+$color-lighter-hover: #FFF5D6;
+$color-light:         #e2e2d7;
+$color-primary:       #FFDE59;
 $color-primary-hover: #ffd52e;
 
 *{margin:0;padding:0;text-decoration:none;color:black;border:none;box-sizing:border-box; font-family:Arial, Helvetica, sans-serif;font-size:10px;font-family: "Montserrat", sans-serif;}
 
 div#root {
     background-color: #eaeaea;
+}
+
+div.app {
+    display: flex;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: $color-dark;
+}
+h2 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    text-align: center;
+    color: $color-dark;
+    margin-bottom: 2rem;
+}
+
+main#generator {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+@media screen and (max-width: 700px) {
+    main#generator {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
 }

@@ -1,10 +1,24 @@
+// react
+import { BrowserRouter as Router } from 'react-router-dom';
+
+// components
+import { AppRoutes } from './Routes/Routes';
+import { Navbar } from './Components/Navbar/Navbar';
+
+// css
 import './app.css';
-import { Generator } from './Generator/Generator';
+import { FloatingLogo } from './Components/FloatingLogo/FloatingLogo';
 
 function App() {
 
     return (
-        <Generator/>
+        <div className='app'>
+            <Router>
+                <Navbar/>
+                <FloatingLogo/>
+                <AppRoutes/>
+            </Router>
+        </div>
     );
 }
 

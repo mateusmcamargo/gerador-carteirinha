@@ -9,7 +9,7 @@ export function Generator() {
     const [textRA,    setTextRA]   = useState('');
     const [generated, setGenerated] = useState(false);
     const [fileLoad,  setFileLoad]  = useState(false);
-    const [fileName,  setFileName]  = useState('selecione o arquivo da foto');
+    const [fileName,  setFileName]  = useState('Selecione o arquivo da foto');
     const [name,      setName]      = useState('');
     const [course,    setCourse]    = useState('');
 
@@ -41,7 +41,7 @@ export function Generator() {
 
         try {
             const imgBg  = new Image();
-            imgBg.src    = 'https://mateusmcamargo.github.io/code-generator/carteirinha_em_branco.svg';
+            imgBg.src    = 'https://mateusmcamargo.github.io/gerador-carteirinha/carteirinha_em_branco.svg';
             imgBg.width  = 1430;
             imgBg.height = 904;
             await imgBg.decode();
@@ -205,9 +205,9 @@ export function Generator() {
     };
 
     return (
-        <main>
+        <main id='generator'>
             <section className='section-input visible'>
-                <h1>Gerador de Carteirinhas</h1>
+                <h2>Gerador de Carteirinhas</h2>
                 
                 <label className='actual-label'>Foto do aluno</label>
                 <label className={fileLoad ? 'pseudo-input loaded' : 'pseudo-input'}>
@@ -223,7 +223,7 @@ export function Generator() {
                 <label className='actual-label'>Nome do aluno</label>
                 <input
                     type='text'
-                    placeholder='nome do aluno'
+                    placeholder='Nome do aluno'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />

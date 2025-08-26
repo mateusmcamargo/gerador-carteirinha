@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  border: none;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+div#root {
+  background-color: #eaeaea;
+}
+
+div.app {
+  display: flex;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #303030;
+}
+
+h2 {
+  font-size: 3.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #303030;
+  margin-bottom: 2rem;
+}
+
+main#generator {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+@media screen and (max-width: 700px) {
+  main#generator {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+section.navbar {
+  display: grid;
+  grid-template-rows: 0.8fr 2fr 0.3fr;
+  height: 100vh;
+  min-width: 22rem;
+  padding: 0 2rem;
+  background-color: #FFDE59;
+}
+section.navbar div.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section.navbar div.logo div.img {
+  height: 14.2rem;
+  width: 14.2rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/public/dacomp.png");
+}
+section.navbar nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+section.navbar nav a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.2rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: 0.8rem;
+  transition: 0.2s ease;
+}
+section.navbar nav a i {
+  font-size: 2rem;
+  color: #303030;
+}
+section.navbar nav a span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  color: #303030;
+}
+section.navbar nav a:hover {
+  background-color: #FFF5D6;
+}
+section.navbar nav a.active {
+  background-color: white;
+}
+section.navbar nav a.active i, section.navbar nav a.active span {
+  font-weight: 600;
+}
+section.navbar div.footer span, section.navbar div.footer a, section.navbar div.footer i {
+  color: #303030;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+section.navbar div.footer span {
+  line-height: 160%;
+}
+section.navbar div.footer span a {
+  display: block;
+  position: relative;
+  right: 1.2rem;
+  padding: 0.4rem 0.6rem 0.4rem 1.2rem;
+  text-decoration: underline;
+  transition: 0.1s ease;
+  border-radius: 0 1rem 1rem 0;
+}
+section.navbar div.footer span a:hover {
+  right: 0rem;
+  background-color: white;
+}
+section.navbar div.footer span a i {
+  margin-right: 0.4rem;
+}
+
+@media screen and (max-width: 700px) {
+  section.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: 100vw;
+    padding: 2rem 2rem 1rem 2rem;
+  }
+  section.navbar div.logo {
+    display: none;
+  }
+  section.navbar nav {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+  section.navbar nav a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 0;
+    gap: 0;
+    padding: 0;
+  }
+  section.navbar nav a i {
+    font-size: 2rem;
+    color: #303030;
+  }
+  section.navbar nav a span {
+    display: none;
+  }
+  section.navbar nav a:hover {
+    background-color: #FFF5D6;
+  }
+  section.navbar nav a.active {
+    background: none;
+    bottom: 0.4rem;
+  }
+  section.navbar nav a.active i, section.navbar nav a.active span {
+    font-weight: 600;
+  }
+  section.navbar div.footer span, section.navbar div.footer a, section.navbar div.footer i {
+    color: #303030;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  section.navbar div.footer span {
+    line-height: 200%;
+  }
+  section.navbar div.footer span a {
+    display: inline;
+    position: relative;
+    right: 1rem;
+    padding: 0.4rem 1rem;
+    text-decoration: underline;
+    transition: 0.1s ease;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  section.navbar div.footer span a:hover {
+    right: 0rem;
+    background-color: white;
+  }
+  section.navbar div.footer span a i {
+    margin: 0 0.3rem 0 0.8rem;
+  }
+}/*# sourceMappingURL=navbar.css.map */

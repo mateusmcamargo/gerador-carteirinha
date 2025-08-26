@@ -1,0 +1,59 @@
+@import '../../app';
+
+div.floating-logo {
+    width: 6.4rem;
+    height: 6.4rem;
+    margin: 0 4rem 4rem 0;
+    border-radius: 1.6rem;
+    
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: .5;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/public/dacomp.png');
+    transition: .2s ease;
+    cursor: pointer;
+    
+    button {
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        background-color: $color-dark;
+        
+        i {
+            color: white;
+            font-size: 1.4rem;
+        }
+    }
+    
+    &:hover {
+        opacity: 1;
+        filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+
+        button {opacity: 1}
+    }
+}
+
+@media screen and (max-width: 700px) {
+    div.floating-logo {
+        margin: 0 2rem 4rem 0;
+        opacity: 1;
+        bottom: 7rem;
+
+        button {
+            opacity: 1;
+        }
+    }
+}

@@ -12,4 +12,38 @@
 
 div#root {
   background-color: #eaeaea;
+}
+
+div.app {
+  display: flex;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #303030;
+}
+
+h2 {
+  font-size: 3.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #303030;
+  margin-bottom: 2rem;
+}
+
+main#generator {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+@media screen and (max-width: 700px) {
+  main#generator {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }/*# sourceMappingURL=app.css.map */

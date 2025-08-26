@@ -14,6 +14,30 @@ div#root {
   background-color: #eaeaea;
 }
 
+div.app {
+  display: flex;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #303030;
+}
+
+h2 {
+  font-size: 3.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #303030;
+  margin-bottom: 2rem;
+}
+
+main#generator {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
 input, select, label.pseudo-input {
   width: 100%;
   height: 4.2rem;
@@ -22,7 +46,7 @@ input, select, label.pseudo-input {
   border-radius: 0.4rem;
   font-size: 1.6rem;
   font-weight: 500;
-  color: #333;
+  color: #303030;
   outline: 0 solid #FFDE59;
   background-color: white;
   transition: 0.05s ease;
@@ -52,14 +76,14 @@ label.pseudo-input {
   color: #8b8b8b;
 }
 label.pseudo-input.loaded {
-  color: #333;
+  color: #303030;
 }
 
 label.actual-label {
   font-size: 1.6rem;
   font-weight: 500;
   align-self: self-start;
-  color: #333;
+  color: #303030;
 }
 
 button {
@@ -69,7 +93,7 @@ button {
   border-radius: 0.4rem;
   font-size: 1.6rem;
   font-weight: 500;
-  color: #333;
+  color: #303030;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
   background-color: #FFDE59;
   cursor: pointer;
@@ -78,23 +102,6 @@ button {
 button:hover {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
   background-color: #ffd52e;
-}
-
-i {
-  font-size: 1.6rem;
-  color: #8b8b8b;
-  margin-right: 1rem;
-}
-i.loaded {
-  color: #333;
-}
-
-h1 {
-  font-size: 3.2rem;
-  font-weight: 400;
-  text-align: center;
-  color: #333;
-  margin-bottom: 2rem;
 }
 
 main {
@@ -111,7 +118,9 @@ main section.visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 30vw;
+  height: 58vh;
   padding: 3.2rem;
   border-radius: 1.6rem;
   background-color: white;
@@ -120,8 +129,13 @@ main section.visible {
 main section.invisible {
   display: none;
 }
-main section.section-input {
-  width: 30vw;
+main section.section-input i {
+  font-size: 1.6rem;
+  color: #8b8b8b;
+  margin-right: 1rem;
+}
+main section.section-input i.loaded {
+  color: #303030;
 }
 main section.section-input div.div-grid {
   display: grid;
@@ -130,13 +144,13 @@ main section.section-input div.div-grid {
   width: 100%;
 }
 main section.section-canva {
+  justify-content: space-between;
   width: 30vw;
   margin: 0 auto;
 }
 main section.section-canva canvas {
   width: 100%;
 }
-
 @media screen and (max-width: 600px) {
   main {
     gap: 2rem;
