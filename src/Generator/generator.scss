@@ -1,0 +1,178 @@
+@import '../app';
+
+input, select, label.pseudo-input {
+    width: 100%;
+    height: 4.2rem;
+    
+    padding: .8rem 1.2rem;
+    margin: 1rem 0 2rem 0;
+    
+    border-radius: .4rem;
+    
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $color-dark;
+    
+    outline: 0 solid $color-primary;
+    background-color: white;
+    transition: .05s ease;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+
+    &[type="file"] {
+        display: none;
+    }
+
+    &:hover {
+        filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+    }
+    
+    &:focus {
+        filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+        outline: 2px solid $color-primary;
+    }
+    &::placeholder {
+        color: $color-placeholder;
+    }
+}
+label.pseudo-input {
+    display: flex;
+    align-items: center;
+    
+    cursor: pointer;
+    color: $color-placeholder;
+    
+    &.loaded {
+        color: $color-dark;
+    }
+}
+label.actual-label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    align-self: self-start;
+    color: $color-dark;
+}
+button {
+    width: 100%;
+    height: 4.2rem;
+    
+    padding: .4rem 1.2rem;
+    
+    border-radius: .4rem;
+    
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $color-dark;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+    background-color: $color-primary;
+    cursor: pointer;
+    transition: .2s ease;
+
+    &:hover {
+        filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+        background-color: $color-primary-hover;
+    }
+}
+
+i {
+    font-size: 1.6rem;
+    color: $color-placeholder;
+    margin-right: 1rem;
+
+    &.loaded {
+        color: $color-dark;
+    }
+}
+
+h1 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+main {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem;
+
+    section {
+
+        &.visible {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            padding: 3.2rem;
+            
+            border-radius: 1.6rem;
+            background-color: white;
+            filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.15));
+        }
+
+        &.invisible {
+            display: none;
+        }
+
+        &.section-input {
+            width: 30vw;
+            
+            div.div-grid {
+                display: grid;
+                grid-template-columns: .4fr 1fr;
+                gap: 1.6rem;
+                width: 100%;
+            }
+        }
+
+        &.section-canva {
+            width: 30vw;
+            margin: 0 auto;
+            
+            canvas {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    main {
+        gap: 2rem;
+        padding: 2rem;
+
+        section {
+            
+            &.visible {width: 100%; padding: 4.8rem 2.4rem;}
+
+            &.section-input {
+
+                h1 {
+                    font-size: 2.4rem;
+                    margin-bottom: 2rem;
+                }
+                div.div-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1.6rem;
+                    width: 100%;
+                }
+            }
+
+            &.section-canva {
+                padding: 2.4rem;
+
+                button {
+                    margin-top: 2rem;
+                }
+            }
+        }
+    }
+}
