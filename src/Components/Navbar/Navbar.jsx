@@ -26,7 +26,7 @@ export function Navbar() {
             <div className='footer'>
                 <span>
                     Desenvolvido por
-                    <a target='blank' href='https://github.com/mateusmcamargo'>
+                    <a href='https://github.com/mateusmcamargo' target='_blank' rel='noopener noreferrer'>
                         <i className='fa-brands fa-github'></i>
                         mateusmcamargo
                     </a>

@@ -9,7 +9,7 @@ div.floating-logo {
     position: fixed;
     bottom: 0;
     right: 0;
-    opacity: .5;
+    opacity: .75;
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
     background-size: cover;
     background-repeat: no-repeat;
@@ -18,6 +18,12 @@ div.floating-logo {
     transition: .2s ease;
     cursor: pointer;
     
+    a {
+        display: block;
+        width: 6.4rem;
+        height: 6.4rem;
+    }
+
     button {
         opacity: 0;
         display: flex;

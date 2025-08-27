@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './floatingLogo.css';
+import { Link } from 'react-router-dom';
 
 export function FloatingLogo() {
 
@@ -18,14 +19,12 @@ export function FloatingLogo() {
         {visible && (
             <div
                 className='floating-logo'
-                style={{
-                    scale: scale
-                }}
+                style={{scale: scale}}
             >
                 <button onClick={handleButtonClose}>
                     <i className='fa-solid fa-xmark'/>
                 </button>
-                <a target='blank' href='https://www.instagram.com/dacompcp/'></a>
+                <a href='https://www.instagram.com/dacompcp/' target='_blank' rel='noopener noreferrer'></a>
             </div>
         )}
         </>
