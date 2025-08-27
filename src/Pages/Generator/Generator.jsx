@@ -5,17 +5,20 @@ import './generator.css';
 
 export function Generator() {
 
-    // Use state constants
-    const [textRA,    setTextRA]   = useState('');
-    const [generated, setGenerated] = useState(false);
-    const [fileLoad,  setFileLoad]  = useState(false);
-    const [fileName,  setFileName]  = useState('Selecione o arquivo da foto');
-    const [name,      setName]      = useState('');
-    const [course,    setCourse]    = useState('');
+    const [textRA,         setTextRA]         = useState('');
+    const [generated,      setGenerated]      = useState(false);
+    const [fileLoad,       setFileLoad]       = useState(false);
+    const [fileName,       setFileName]       = useState('Selecione o arquivo da foto');
+    const [name,           setName]           = useState('');
+    const [course,         setCourse]         = useState('');
+    const [downloadMethod, setDownloadMethod] = useState('');
 
-    // Use Ref constants
     const canvasRef = useRef();
     const [userPicture, setProfilePicture] = useState(null);
+
+    const handleDownloadMethod = (event) => {
+        setDownloadMethod(event.target.value);
+    }
 
     const handleProfileImage = (event) => {
 
@@ -111,10 +114,12 @@ export function Generator() {
             }
 
             // text color and align
+            // DO NOT CHANGE ANY STYLING CODE FOR THE GENERATOR
+            // UNLESS THE WHOLE CARD DESIGN IS ALREADY CHANGED
             ctx.fillStyle = '#333';
             ctx.textAlign = 'left';
 
-            // text coordinates and margins
+            // text coordinates and margins. **DO NOT CHANGE**
             const textXStart        = 488;
             const textYName         = 254;
             const textYNameMargin   = 74;
@@ -179,7 +184,7 @@ export function Generator() {
                     cropY      = (img.height - cropHeight) / 2;
                 }
 
-                // draw picture on canvas
+                // draw picture on canvas **DO NOT CHANGE**
                 ctx.drawImage(
                     img,
                     cropX, cropY,
@@ -196,7 +201,8 @@ export function Generator() {
         }
     };  
 
-    // downloads image (only works when deployed, WILL NOT work on local servers)
+    // downloads image (only works when deployed, probably WON' T work on local servers)
+    // only works on 'https://' addresess
     const downloadImage = (method) => {
         
         const link = document.createElement('a');
@@ -239,7 +245,7 @@ export function Generator() {
                     type='text'
                     placeholder='Nome do aluno'
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(event) => setName(event.target.value)}
                 />
                 
                 <div className='div-grid'>
@@ -249,7 +255,7 @@ export function Generator() {
                             type='text'
                             placeholder='1234567'
                             value={textRA}
-                            onChange={(e) => setTextRA(e.target.value)}
+                            onChange={(event) => setTextRA(event.target.value)}
                         />
                     </div>
 
@@ -257,7 +263,7 @@ export function Generator() {
                         <label className='actual-label'>Curso do aluno</label>
                         <select
                             value={course}
-                            onChange={(e) => setCourse(e.target.value)}
+                            onChange={(event) => setCourse(event.target.value)}
                         >
                             <option value="">Selecione o curso</option>
                             <option value="Engenharia de Computação">Engenharia de Computação</option>
@@ -280,17 +286,38 @@ export function Generator() {
                     <>
                         <label className='actual-label'>Nomear carteirinha por:</label>
                         <div className='radios'>
-                            <input type='radio' id='radio-name' name='download' value='name'/>
+                            <input
+                                type='radio'
+                                id='radio-name'
+                                name='download'
+                                value='name'
+                                checked={downloadMethod === 'name'}
+                                onChange={handleDownloadMethod}
+                            />
                             <label className='actual-label' htmlFor='radio-name'>Nome</label>
 
-                            <input type='radio' id='radio-code' name='download' value='code'/>
+                            <input
+                                type='radio'
+                                id='radio-code'
+                                name='download'
+                                value='code'
+                                checked={downloadMethod === 'code'}
+                                onChange={handleDownloadMethod}
+                            />
                             <label className='actual-label' htmlFor='radio-code'>RA</label>
 
-                            <input type='radio' id='radio-both' name='download' value='both'/>
+                            <input
+                                type='radio'
+                                id='radio-both'
+                                name='download'
+                                value='both'
+                                checked={downloadMethod === 'both'}
+                                onChange={handleDownloadMethod}
+                            />
                             <label className='actual-label' htmlFor='radio-both'>Ambos</label>
                         </div>
 
-                        <button onClick={() => downloadImage('name')}>
+                        <button onClick={() => downloadImage(downloadMethod)}>
                             Baixar Carteirinha
                         </button>
                     </>
