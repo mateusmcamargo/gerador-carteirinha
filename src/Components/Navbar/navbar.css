@@ -182,7 +182,7 @@ section.navbar div.footer span a i {
   }
   section.navbar div.footer span a:hover {
     right: 0rem;
-    background-color: none;
+    background: none;
   }
   section.navbar div.footer span a i {
     margin: 0 0.3rem 0 0.8rem;
