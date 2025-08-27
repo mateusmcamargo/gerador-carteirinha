@@ -8,14 +8,13 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   font-family: "Montserrat", sans-serif;
-}
-
-div#root {
-  background-color: #eaeaea;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 div.app {
   display: flex;
+  background-color: #eaeaea;
 }
 
 h1 {
@@ -30,12 +29,6 @@ h2 {
   text-align: center;
   color: #303030;
   margin-bottom: 2rem;
-}
-
-main#generator {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
 }
 
 input, select, label.pseudo-input {
@@ -53,6 +46,9 @@ input, select, label.pseudo-input {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
 }
 input[type=file], select[type=file], label.pseudo-input[type=file] {
+  display: none;
+}
+input[type=radio], select[type=radio], label.pseudo-input[type=radio] {
   display: none;
 }
 input:hover, select:hover, label.pseudo-input:hover {
@@ -104,17 +100,16 @@ button:hover {
   background-color: #ffd52e;
 }
 
-main {
-  width: 100vw;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+main#generator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 4rem;
+  justify-items: center;
+  width: 100vw;
+  max-height: 100vh;
+  padding: 2rem;
 }
-main section.visible {
+main#generator section.visible {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,54 +121,90 @@ main section.visible {
   background-color: white;
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.15));
 }
-main section.invisible {
+main#generator section.invisible {
   display: none;
 }
-main section.section-input i {
+main#generator section.section-input i {
   font-size: 1.6rem;
   color: #8b8b8b;
   margin-right: 1rem;
 }
-main section.section-input i.loaded {
+main#generator section.section-input i.loaded {
   color: #303030;
 }
-main section.section-input div.div-grid {
+main#generator section.section-input div.div-grid {
   display: grid;
   grid-template-columns: 0.4fr 1fr;
   gap: 1.6rem;
   width: 100%;
 }
-main section.section-canva {
+main#generator section.section-canva {
   justify-content: space-between;
   width: 30vw;
   margin: 0 auto;
 }
-main section.section-canva canvas {
+main#generator section.section-canva div.radios {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
+main#generator section.section-canva div.radios label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 4.2rem;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #303030;
+  background-color: white;
+  cursor: pointer;
+  outline: 0 solid #FFDE59;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+  transition: 0.05s ease;
+}
+main#generator section.section-canva div.radios label:hover {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+}
+main#generator section.section-canva div.radios input[type=radio]:checked + label {
+  font-weight: 600;
+  outline: 2px solid #FFDE59;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+}
+main#generator section.section-canva canvas {
+  width: 100%;
+}
+
 @media screen and (max-width: 600px) {
-  main {
+  main#generator {
+    min-height: calc(100vh - 10rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
-    padding: 2rem;
+    margin-bottom: 10rem;
   }
-  main section.visible {
+  main#generator section.visible {
     width: 100%;
     padding: 4.8rem 2.4rem;
   }
-  main section.section-input h1 {
+  main#generator section.section-input h1 {
     font-size: 2.4rem;
     margin-bottom: 2rem;
   }
-  main section.section-input div.div-grid {
+  main#generator section.section-input div.div-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
     width: 100%;
   }
-  main section.section-canva {
+  main#generator section.section-canva {
     padding: 2.4rem;
   }
-  main section.section-canva button {
+  main#generator section.section-canva button {
     margin-top: 2rem;
   }
 }/*# sourceMappingURL=generator.css.map */

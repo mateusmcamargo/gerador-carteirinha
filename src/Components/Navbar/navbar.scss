@@ -5,8 +5,9 @@ section.navbar {
     grid-template-rows: .8fr 2fr .3fr;
 
     height: 100vh;
-    min-width: 22rem;
+    min-width: $navbar-width;
     padding: 0 2rem;
+    z-index: 1;
 
     background-color: $color-primary;
 
@@ -108,15 +109,15 @@ section.navbar {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         gap: 1.6rem;
 
         position: fixed;
         bottom: 0;
 
-        height: auto;
-        width: 100vw;
-        padding: 2rem 2rem 1rem 2rem;
+        padding-bottom: .8rem;
+        height: $navbar-height-mobile;
+        width: $navbar-width-mobile;
 
         div.logo {display: none;}
 
@@ -175,16 +176,12 @@ section.navbar {
                 line-height: 200%;
                 a {
                     display: inline;
-                    position: relative;
-                    right: 1rem;
-                    padding: .4rem 1rem;
-                    text-decoration: underline;
-                    transition: .1s ease;
-                    border-radius: 0 .5rem .5rem 0;
+                    right: 0rem;
+                    padding: 0;
 
                     &:hover {
                         right: 0rem;
-                        background-color: white;
+                        background-color: none;
                     }
                     
                     i {margin: 0 .3rem 0 .8rem}

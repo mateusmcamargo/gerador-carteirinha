@@ -8,14 +8,13 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   font-family: "Montserrat", sans-serif;
-}
-
-div#root {
-  background-color: #eaeaea;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 div.app {
   display: flex;
+  background-color: #eaeaea;
 }
 
 h1 {
@@ -32,27 +31,13 @@ h2 {
   margin-bottom: 2rem;
 }
 
-main#generator {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-}
-
-@media screen and (max-width: 700px) {
-  main#generator {
-    display: grid;
-    justify-items: center;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-}
 section.navbar {
   display: grid;
   grid-template-rows: 0.8fr 2fr 0.3fr;
   height: 100vh;
   min-width: 22rem;
   padding: 0 2rem;
+  z-index: 1;
   background-color: #FFDE59;
 }
 section.navbar div.logo {
@@ -136,13 +121,13 @@ section.navbar div.footer span a i {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1.6rem;
     position: fixed;
     bottom: 0;
-    height: auto;
+    padding-bottom: 0.8rem;
+    height: 10rem;
     width: 100vw;
-    padding: 2rem 2rem 1rem 2rem;
   }
   section.navbar div.logo {
     display: none;
@@ -192,16 +177,12 @@ section.navbar div.footer span a i {
   }
   section.navbar div.footer span a {
     display: inline;
-    position: relative;
-    right: 1rem;
-    padding: 0.4rem 1rem;
-    text-decoration: underline;
-    transition: 0.1s ease;
-    border-radius: 0 0.5rem 0.5rem 0;
+    right: 0rem;
+    padding: 0;
   }
   section.navbar div.footer span a:hover {
     right: 0rem;
-    background-color: white;
+    background-color: none;
   }
   section.navbar div.footer span a i {
     margin: 0 0.3rem 0 0.8rem;

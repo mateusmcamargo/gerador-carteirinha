@@ -197,9 +197,23 @@ export function Generator() {
     };  
 
     // downloads image (only works when deployed, WILL NOT work on local servers)
-    const downloadImage = () => {
+    const downloadImage = (method) => {
+        
         const link = document.createElement('a');
-        link.download = `${name.toUpperCase()}.png`;
+        switch(method) {
+
+            case 'name':
+                link.download = `${name.toUpperCase()}.png`;
+            break;
+
+            case 'RA':
+                link.download = `${textRA}.png`;
+                break;
+                
+            case 'both':
+                link.download = `${textRA}-${name.toUpperCase()}.png`;
+            break;
+        }
         link.href = canvasRef.current.toDataURL();
         link.click();
     };
@@ -263,9 +277,23 @@ export function Generator() {
                 <canvas ref={canvasRef}></canvas>
 
                 {generated && (
-                    <button onClick={downloadImage}>
-                        Baixar Carteirinha
-                    </button>
+                    <>
+                        <label className='actual-label'>Nomear carteirinha por:</label>
+                        <div className='radios'>
+                            <input type='radio' id='radio-name' name='download' value='name'/>
+                            <label className='actual-label' htmlFor='radio-name'>Nome</label>
+
+                            <input type='radio' id='radio-code' name='download' value='code'/>
+                            <label className='actual-label' htmlFor='radio-code'>RA</label>
+
+                            <input type='radio' id='radio-both' name='download' value='both'/>
+                            <label className='actual-label' htmlFor='radio-both'>Ambos</label>
+                        </div>
+
+                        <button onClick={() => downloadImage('name')}>
+                            Baixar Carteirinha
+                        </button>
+                    </>
                 )}
             </section>
         </main>
