@@ -229,54 +229,58 @@ export function Generator() {
             <section className='section-input visible'>
                 <h2>Gerador de Carteirinhas</h2>
                 
-                <label className='actual-label'>Foto do aluno</label>
-                <label className={fileLoad ? 'pseudo-input loaded' : 'pseudo-input'}>
-                    <input
-                        type='file'
-                        accept='image/*'
-                        onChange={handleProfileImage}
-                    />
-                    <i className={fileLoad ? 'fa-solid fa-file-image loaded' : 'fa-solid fa-file-import'}></i>
-                    {fileName}
-                </label>
-
-                <label className='actual-label'>Nome do aluno</label>
-                <input
-                    type='text'
-                    placeholder='Nome do aluno'
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                />
-                
-                <div className='div-grid'>
-                    <div>
-                        <label className='actual-label'>RA</label>
+                <div className='input-block file'>
+                    <label className='actual-label'>Foto do aluno</label>
+                    <label className={fileLoad ? 'pseudo-input loaded' : 'pseudo-input'}>
                         <input
-                            type='text'
-                            placeholder='1234567'
-                            value={textRA}
-                            onChange={(event) => setTextRA(event.target.value)}
+                            type='file'
+                            accept='image/*'
+                            onChange={handleProfileImage}
                         />
-                    </div>
+                        <i className={fileLoad ? 'fa-solid fa-file-image loaded' : 'fa-solid fa-file-import'}></i>
+                        {fileName}
+                    </label>
+                </div>
 
-                    <div>
-                        <label className='actual-label'>Curso do aluno</label>
-                        <select
-                            value={course}
-                            onChange={(event) => setCourse(event.target.value)}
-                        >
-                            <option value="">Selecione o curso</option>
-                            <option value="Engenharia de Computação">Engenharia de Computação</option>
-                            <option value="Engenharia de Software">Engenharia de Software</option>
-                            <option value="Análise e Desenvolv. de Sistemas">Análise e Desenvolvimento de Sistemas</option>
-                            <option value="Licenciatura em Matemática">Licenciatura em Matemática</option>
-                        </select>
+                <div className='input-block name'>
+                    <label className='actual-label'>Nome do aluno</label>
+                    <input
+                        type='text'
+                        placeholder='Nome do aluno'
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                    />
+                </div>
+                
+                <div className='input-block code-course'>
+                    <div className='div-grid'>
+                        <div>
+                            <label className='actual-label'>RA</label>
+                            <input
+                                type='text'
+                                placeholder='1234567'
+                                value={textRA}
+                                onChange={(event) => setTextRA(event.target.value)}
+                            />
+                        </div>
+
+                        <div>
+                            <label className='actual-label'>Curso do aluno</label>
+                            <select
+                                value={course}
+                                onChange={(event) => setCourse(event.target.value)}
+                            >
+                                <option value="">Selecione o curso</option>
+                                <option value="Engenharia de Computação">Engenharia de Computação</option>
+                                <option value="Engenharia de Software">Engenharia de Software</option>
+                                <option value="Análise e Desenvolv. de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                                <option value="Licenciatura em Matemática">Licenciatura em Matemática</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <button onClick={generateImage}>
-                    Gerar Carteirinha
-                </button>
+                <button onClick={generateImage}>Gerar Carteirinha</button>
             </section>
 
             <section className={`section-canva ${generated ? 'visible' : 'invisible'}`}>
@@ -284,39 +288,41 @@ export function Generator() {
 
                 {generated && (
                     <>
-                        <div className='download-methods'>
-                            <label className='actual-label'>Nomear carteirinha por:</label>
-                            <div className='radios'>
-                                <input
-                                    type='radio'
-                                    id='radio-name'
-                                    name='download'
-                                    value='name'
-                                    checked={downloadMethod === 'name'}
-                                    onChange={handleDownloadMethod}
-                                    />
-                                <label className='actual-label' htmlFor='radio-name'>Nome</label>
+                        <div className='input-block'>
+                            <div className='download-methods'>
+                                <label className='actual-label'>Nomear carteirinha por:</label>
+                                <div className='radios'>
+                                    <input
+                                        type='radio'
+                                        id='radio-name'
+                                        name='download'
+                                        value='name'
+                                        checked={downloadMethod === 'name'}
+                                        onChange={handleDownloadMethod}
+                                        />
+                                    <label className='pseudo-radio' htmlFor='radio-name'>Nome</label>
 
-                                <input
-                                    type='radio'
-                                    id='radio-code'
-                                    name='download'
-                                    value='code'
-                                    checked={downloadMethod === 'code'}
-                                    onChange={handleDownloadMethod}
-                                    />
-                                <label className='actual-label' htmlFor='radio-code'>RA</label>
+                                    <input
+                                        type='radio'
+                                        id='radio-code'
+                                        name='download'
+                                        value='code'
+                                        checked={downloadMethod === 'code'}
+                                        onChange={handleDownloadMethod}
+                                        />
+                                    <label className='pseudo-radio' htmlFor='radio-code'>RA</label>
 
-                                <input
-                                    type='radio'
-                                    id='radio-both'
-                                    name='download'
-                                    value='both'
-                                    checked={downloadMethod === 'both'}
-                                    onChange={handleDownloadMethod}
-                                    />
-                                <label className='actual-label' htmlFor='radio-both'>Ambos</label>
+                                    <input
+                                        type='radio'
+                                        id='radio-both'
+                                        name='download'
+                                        value='both'
+                                        checked={downloadMethod === 'both'}
+                                        onChange={handleDownloadMethod}
+                                        />
+                                    <label className='pseudo-radio' htmlFor='radio-both'>Ambos</label>
                             </div>
+                        </div>
                         </div>
 
                         <button onClick={() => downloadImage(downloadMethod)}>

@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { FaRegUser } from 'react-icons/fa6';
 import './navbar.css';
 export function Navbar() {
 
@@ -10,15 +11,15 @@ export function Navbar() {
             </div>
             <nav>
                 <NavLink to='/gerador-carteirinha/user' className={({isActive}) => isActive ? 'active' : ''}>
-                   <i className='fa-regular fa-user'></i>
+                   <i className='fa-regular fa-user'/>
                    <span>Usuário</span>
                 </NavLink>
                 <NavLink to='/gerador-carteirinha/generator' className={({isActive}) => isActive ? 'active' : ''}>
-                   <i className='fa-regular fa-rectangle-list'></i>
+                   <i className='fa-regular fa-rectangle-list'/>
                    <span>Gerador</span>
                 </NavLink>
                 <NavLink to='/gerador-carteirinha/database' className={({isActive}) => isActive ? 'active' : ''}>
-                   <i className='fa-regular fa-id-card'></i>
+                   <i className='fa-regular fa-id-card'/>
                    <span>Carteirinhas</span>
                 </NavLink>
             </nav>
@@ -27,7 +28,7 @@ export function Navbar() {
                 <span>
                     Desenvolvido por
                     <a href='https://github.com/mateusmcamargo' target='_blank' rel='noopener noreferrer'>
-                        <i className='fa-brands fa-github'></i>
+                        <i className='fa-brands fa-github'/>
                         mateusmcamargo
                     </a>
                 </span>

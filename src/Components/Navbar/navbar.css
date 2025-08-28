@@ -20,15 +20,7 @@ div.app {
 h1 {
   font-size: 2.4rem;
   font-weight: 500;
-  color: #303030;
-}
-
-h2 {
-  font-size: 3.2rem;
-  font-weight: 400;
   text-align: center;
-  color: #303030;
-  margin-bottom: 2rem;
 }
 
 section.navbar {
@@ -118,6 +110,10 @@ section.navbar div.footer span a i {
 }
 
 @media screen and (max-width: 700px) {
+  h2 {
+    font-size: 2.6rem;
+    font-weight: 500;
+  }
   section.navbar {
     display: flex;
     flex-direction: column;
