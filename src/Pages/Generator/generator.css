@@ -115,7 +115,7 @@ main#generator section.visible {
   align-items: center;
   justify-content: space-between;
   width: 30vw;
-  height: 58vh;
+  height: 60vh;
   padding: 3.2rem;
   border-radius: 1.6rem;
   background-color: white;
@@ -138,18 +138,19 @@ main#generator section.section-input div.div-grid {
   gap: 1.6rem;
   width: 100%;
 }
-main#generator section.section-canva {
-  justify-content: space-between;
-  width: 30vw;
-  margin: 0 auto;
+main#generator section.section-canva div.download-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
-main#generator section.section-canva div.radios {
+main#generator section.section-canva div.download-methods div.radios {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
-main#generator section.section-canva div.radios label {
+main#generator section.section-canva div.download-methods div.radios label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,10 +166,10 @@ main#generator section.section-canva div.radios label {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
   transition: 0.05s ease;
 }
-main#generator section.section-canva div.radios label:hover {
+main#generator section.section-canva div.download-methods div.radios label:hover {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
 }
-main#generator section.section-canva div.radios input[type=radio]:checked + label {
+main#generator section.section-canva div.download-methods div.radios input[type=radio]:checked + label {
   font-weight: 600;
   outline: 2px solid #FFDE59;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
@@ -185,9 +186,10 @@ main#generator section.section-canva canvas {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 14.4rem;
   }
   main#generator section.visible {
+    height: auto;
     width: 100%;
     padding: 4.8rem 2.4rem;
   }
@@ -203,6 +205,34 @@ main#generator section.section-canva canvas {
   }
   main#generator section.section-canva {
     padding: 2.4rem;
+  }
+  main#generator section.section-canva div.download-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  main#generator section.section-canva div.download-methods div.radios label {
+    width: 9.4rem;
+    height: 4.2rem;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #303030;
+    background-color: white;
+    cursor: pointer;
+    outline: 0 solid #FFDE59;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+    transition: 0.05s ease;
+  }
+  main#generator section.section-canva div.download-methods div.radios label:hover {
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+  }
+  main#generator section.section-canva div.download-methods div.radios input[type=radio]:checked + label {
+    font-weight: 600;
+    outline: 2px solid #FFDE59;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
   }
   main#generator section.section-canva button {
     margin-top: 2rem;

@@ -91,7 +91,7 @@ main#generator {
             align-items: center;
             justify-content: space-between;
             width: 30vw;
-            height: 58vh;
+            height: 60vh;
             
             padding: 3.2rem;
             
@@ -105,6 +105,7 @@ main#generator {
         }
 
         &.section-input {
+
             i {
                 font-size: 1.6rem;
                 color: $color-placeholder;
@@ -124,49 +125,53 @@ main#generator {
         }
 
         &.section-canva {
-            justify-content: space-between;
-            width: 30vw;
-            margin: 0 auto;
 
-            div.radios {
+            div.download-methods {
                 display: flex;
-                align-items: center;
-                justify-content: space-between;
+                flex-direction: column;
+                gap: 2rem;
                 width: 100%;
 
-                label {
+                div.radios {
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-
-                    width: 12rem;
-                    height: 4.2rem;
+                    justify-content: space-between;
+                    width: 100%;
                     
+                    label {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        
+                        width: 12rem;
+                        height: 4.2rem;
+                        
+                        
+                        border-radius: .4rem;
+                        
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                        color: $color-dark;
+                        
+                        background-color: white;
+                        cursor: pointer;
+                        outline: 0 solid $color-primary;
+                        filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+                        transition: .05s ease;
+                        
+                        &:hover {
+                            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+                        }
+                    }
                     
-                    border-radius: .4rem;
-
-                    font-size: 1.6rem;
-                    font-weight: 500;
-                    color: $color-dark;
-                    
-                    background-color: white;
-                    cursor: pointer;
-                    outline: 0 solid $color-primary;
-                    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
-                    transition: .05s ease;
-                    
-                    &:hover {
+                    input[type='radio']:checked + label {
+                        font-weight: 600;
+                        outline: 2px solid $color-primary;
                         filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
                     }
                 }
-                
-                input[type='radio']:checked + label {
-                    font-weight: 600;
-                    outline: 2px solid $color-primary;
-                    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
-                }
             }
-            
+                
             canvas {
                 width: 100%;
             }
@@ -183,10 +188,10 @@ main#generator {
         align-items: center;
         justify-content: center;
         gap: 2rem;
-        margin-bottom: $navbar-height-mobile;
+        margin-bottom: $navbar-height-mobile + 4.4rem;
 
         section {
-            &.visible {width: 100%; padding: 4.8rem 2.4rem;}
+            &.visible {height: auto; width: 100%; padding: 4.8rem 2.4rem;}
 
             &.section-input {
 
@@ -205,6 +210,46 @@ main#generator {
             &.section-canva {
                 padding: 2.4rem;
 
+                div.download-methods {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    width: 100%;
+                    margin-top: 1rem;
+
+                    div.radios {
+
+                        label {
+                            
+                            width: 9.4rem;
+                            height: 4.2rem;
+                            
+                            
+                            border-radius: .4rem;
+                            
+                            font-size: 1.6rem;
+                            font-weight: 500;
+                            color: $color-dark;
+                            
+                            background-color: white;
+                            cursor: pointer;
+                            outline: 0 solid $color-primary;
+                            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+                            transition: .05s ease;
+                            
+                            &:hover {
+                                filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+                            }
+                        }
+                        
+                        input[type='radio']:checked + label {
+                            font-weight: 600;
+                            outline: 2px solid $color-primary;
+                            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+                        }
+                    }
+                }
+            
                 button {
                     margin-top: 2rem;
                 }

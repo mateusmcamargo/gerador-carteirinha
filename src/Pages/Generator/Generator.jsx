@@ -284,37 +284,39 @@ export function Generator() {
 
                 {generated && (
                     <>
-                        <label className='actual-label'>Nomear carteirinha por:</label>
-                        <div className='radios'>
-                            <input
-                                type='radio'
-                                id='radio-name'
-                                name='download'
-                                value='name'
-                                checked={downloadMethod === 'name'}
-                                onChange={handleDownloadMethod}
-                            />
-                            <label className='actual-label' htmlFor='radio-name'>Nome</label>
+                        <div className='download-methods'>
+                            <label className='actual-label'>Nomear carteirinha por:</label>
+                            <div className='radios'>
+                                <input
+                                    type='radio'
+                                    id='radio-name'
+                                    name='download'
+                                    value='name'
+                                    checked={downloadMethod === 'name'}
+                                    onChange={handleDownloadMethod}
+                                    />
+                                <label className='actual-label' htmlFor='radio-name'>Nome</label>
 
-                            <input
-                                type='radio'
-                                id='radio-code'
-                                name='download'
-                                value='code'
-                                checked={downloadMethod === 'code'}
-                                onChange={handleDownloadMethod}
-                            />
-                            <label className='actual-label' htmlFor='radio-code'>RA</label>
+                                <input
+                                    type='radio'
+                                    id='radio-code'
+                                    name='download'
+                                    value='code'
+                                    checked={downloadMethod === 'code'}
+                                    onChange={handleDownloadMethod}
+                                    />
+                                <label className='actual-label' htmlFor='radio-code'>RA</label>
 
-                            <input
-                                type='radio'
-                                id='radio-both'
-                                name='download'
-                                value='both'
-                                checked={downloadMethod === 'both'}
-                                onChange={handleDownloadMethod}
-                            />
-                            <label className='actual-label' htmlFor='radio-both'>Ambos</label>
+                                <input
+                                    type='radio'
+                                    id='radio-both'
+                                    name='download'
+                                    value='both'
+                                    checked={downloadMethod === 'both'}
+                                    onChange={handleDownloadMethod}
+                                    />
+                                <label className='actual-label' htmlFor='radio-both'>Ambos</label>
+                            </div>
                         </div>
 
                         <button onClick={() => downloadImage(downloadMethod)}>
