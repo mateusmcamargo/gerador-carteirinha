@@ -212,7 +212,7 @@ export function Generator() {
                 link.download = `${name.toUpperCase()}.png`;
             break;
 
-            case 'RA':
+            case 'code':
                 link.download = `${textRA}.png`;
                 break;
                 
