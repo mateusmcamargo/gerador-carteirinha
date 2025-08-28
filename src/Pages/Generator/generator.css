@@ -172,7 +172,7 @@ main#generator section.section-canva div.input-block div.download-methods div.ra
     align-items: center;
     justify-content: flex-start;
     gap: 2rem;
-    margin-bottom: 7.5rem;
+    margin-bottom: 11rem;
   }
   main#generator section.visible {
     min-height: auto;

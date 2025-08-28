@@ -187,7 +187,7 @@ main#generator {
         align-items: center;
         justify-content: flex-start;
         gap: 2rem;
-        margin-bottom: $navbar-height-mobile - 3.5rem;
+        margin-bottom: $navbar-height-mobile;
 
         section {
             &.visible {
