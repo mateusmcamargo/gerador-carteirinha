@@ -9,15 +9,15 @@ export function Navbar() {
                 <h1>DACOMP</h1>
             </div>
             <nav>
-                <NavLink to='/user' className={({isActive}) => isActive ? 'active' : ''}>
+                <NavLink to='/gerador-carteirinha/user' className={({isActive}) => isActive ? 'active' : ''}>
                    <i className='fa-regular fa-user'></i>
                    <span>Usuário</span>
                 </NavLink>
-                <NavLink to='/' className={({isActive}) => isActive ? 'active' : ''}>
+                <NavLink to='/gerador-carteirinha/generator' className={({isActive}) => isActive ? 'active' : ''}>
                    <i className='fa-regular fa-rectangle-list'></i>
                    <span>Gerador</span>
                 </NavLink>
-                <NavLink to='/database' className={({isActive}) => isActive ? 'active' : ''}>
+                <NavLink to='/gerador-carteirinha/database' className={({isActive}) => isActive ? 'active' : ''}>
                    <i className='fa-regular fa-id-card'></i>
                    <span>Carteirinhas</span>
                 </NavLink>

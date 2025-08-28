@@ -7,7 +7,7 @@ import { Generator } from "../Pages/Pages";
 export function AppRoutes() {
     return (
         <Routes>
-            <Route path='/' element={<Generator/>}/>
+            <Route path='/gerador-carteirinha/generator' element={<Generator/>}/>
         </Routes>
     )
 }
