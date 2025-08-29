@@ -8,13 +8,45 @@ export function Generator() {
     const [textRA,         setTextRA]         = useState('');
     const [generated,      setGenerated]      = useState(false);
     const [fileLoad,       setFileLoad]       = useState(false);
-    const [fileName,       setFileName]       = useState('Selecione o arquivo da foto');
+    const [isDragging,     setIsDragging]     = useState(false);
+    const [fileName,       setFileName]       = useState('Clique para escolher uma imagem ou solte uma aqui...');
     const [name,           setName]           = useState('');
     const [course,         setCourse]         = useState('');
     const [downloadMethod, setDownloadMethod] = useState('');
 
     const canvasRef = useRef();
     const [userPicture, setProfilePicture] = useState(null);
+
+    // Drag events helpers
+    const handleDrag = (e, dragging) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(dragging);
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(false);
+
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+
+            const file = e.dataTransfer.files[0];
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                const img = new Image();
+                img.src = reader.result;
+                img.crossOrigin = 'anonymous';
+                img.onload = () => setProfilePicture(img);
+
+                setFileLoad(true);
+                setFileName(file.name);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    };
 
     const handleDownloadMethod = (event) => {
         setDownloadMethod(event.target.value);
@@ -231,7 +263,16 @@ export function Generator() {
                 
                 <div className='input-block file'>
                     <label className='actual-label'>Foto do aluno</label>
-                    <label className={fileLoad ? 'pseudo-input loaded' : 'pseudo-input'}>
+                    <label
+                        className={`
+                            dropzone pseudo-input
+                            ${fileLoad   ? 'loaded'   : ''}
+                            ${isDragging ? 'dragging' : ''}
+                        `}
+                        onDragOver={(event) => handleDrag(event, true)}
+                        onDragLeave={(event) => handleDrag(event, false)}
+                        onDrop={handleDrop}
+                    >
                         <input
                             type='file'
                             accept='image/*'
