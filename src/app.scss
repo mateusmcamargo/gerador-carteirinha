@@ -9,11 +9,14 @@ $color-primary-border: #dbb418;
 
 $navbar-width: 22rem;
 $navbar-width-mobile: 100vw;
-$navbar-height-mobile: 11rem;
+$navbar-height-mobile: 14vh;
 
 *{margin:0;padding:0;text-decoration:none;color:black;border:none;box-sizing:border-box; font-family:Arial, Helvetica, sans-serif;font-size:10px;font-family: "Montserrat", sans-serif;-webkit-tap-highlight-color: transparent;outline: none;}
 
 div.app {
     display: flex;
+}
+
+main {
     background-color: #eaeaea;
 }

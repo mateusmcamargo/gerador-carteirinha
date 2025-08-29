@@ -14,6 +14,9 @@
 
 div.app {
   display: flex;
+}
+
+main {
   background-color: #eaeaea;
 }
 
@@ -123,7 +126,7 @@ section.navbar div.footer span a i {
     position: fixed;
     bottom: 0;
     padding-bottom: 0.6rem;
-    height: 11rem;
+    height: 14vh;
     width: 100vw;
     border: none;
   }
