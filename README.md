@@ -6,7 +6,7 @@ Projeto feito em [React](https://react.dev/). Um gerador de carteirinhas para os
 
 O projeto está disponível nessa [página](https://mateusmcamargo.github.io/gerador-carteirinha/)
 
-## Funcionalidade
+## Funcionalidades
 
 Gera uma imagem em alta qualidade para impressão da carteirinha, com foto, nome, curso e número de Registro do Aluno (RA), além de um código QR e um código de barras com o valor do RA.
 
